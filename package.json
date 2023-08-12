@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/KaranKumar05/JWT-Authentication#readme",
   "dependencies": {
+    "bcrypt-inzi": "^1.0.7",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
+    "mongodb": "^5.7.0",
     "nodemon": "^3.0.1"
   }
 }
