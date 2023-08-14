@@ -1,0 +1,290 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(10, 29, 37);
+}
+
+.parent {
+    position: relative;
+    width: 750px;
+    height: 450px;
+    background: transparent;
+    border: 2px solid rgb(0, 251, 255);
+    overflow: hidden;
+    box-shadow: 0 0 25px #0ef;
+}
+
+/* Login  */
+.parent .login_form {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.parent .login_form.login {
+    left: 0;
+    padding: 0 60px 0 40px;
+}
+
+.parent .login_form.login .animation {
+    transform: translateX(0);
+    transition: .7s ease;
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--j));
+
+}
+
+.parent.active .login_form.login .animation {
+    transform: translateX(-120%);
+    transition-delay: calc(.1s * var(--i));
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.login_form h2 {
+    color: white;
+    text-align: center;
+    font-size: 32px;
+}
+
+.login_form .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding-right: 23px;
+    color: white;
+    font-weight: 600px;
+    border-bottom: 2px solid white;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom: 2px solid rgb(27, 216, 250);
+}
+
+.input-box label,
+.input-box i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.input-box label {
+    left: 0;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: 0px;
+    color: rgb(27, 216, 250);
+    font-size: 13px;
+}
+
+.input-box i {
+    right: 0;
+    font-size: 20px;
+}
+
+.input-box input:focus~i,
+.input-box input:valid~i {
+    color: rgb(27, 216, 250);
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid rgb(27, 216, 250);
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    transition: .5s;
+}
+
+.btn:hover {
+    background-color: rgba(0, 251, 255, 0.712);
+}
+
+.login_form .link {
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.login_form .link p a {
+    color: rgb(27, 216, 250);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login_form .link p a:hover {
+    text-decoration: underline;
+}
+
+.parent .info-text {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.parent .info-text.login {
+    right: 0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+}
+
+.parent .info-text.login .animation {
+    transform: translateX(0);
+    transition: .7s ease;
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--j));
+}
+
+.parent.active .info-text.login .animation {
+    transform: translateX(120%);
+    transition-delay: calc(.1s * var(--i));
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.parent .info-text h2 {
+    color: white;
+    font-size: 36px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Register  */
+.parent .login_form.register {
+    right: 0;
+    padding: 0 40px 0 60px;
+    pointer-events: none;
+}
+
+.parent.active .login_form.register {
+    pointer-events: auto;
+}
+
+.parent .login_form.register .animation {
+    transform: translateX(130%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.parent.active .login_form.register .animation {
+    transition-delay: calc(.1s * var(--i));
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+
+}
+
+.parent .info-text.register {
+    left: 0;
+    pointer-events: none;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: none;
+}
+
+.parent.active .info-text.register {
+    pointer-events: auto;
+}
+
+.parent .info-text.register .animation {
+    transform: translateX(-130%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.parent.active .info-text.register .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+}
+
+
+
+
+/* Background Animation */
+.parent .bg-animation {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 850px;
+    height: 600px;
+    background: linear-gradient(45deg, #081b29, #0ef);
+    transform: rotate(15deg) skewY(40deg);
+    transform-origin: bottom right;
+    border-bottom: 3px solid #0ef;
+    transition: 1s ease;
+    transition-delay: 1.3s;
+}
+
+.parent.active .bg-animation {
+    transform: rotate(0) skewY(0);
+    transition-delay: 0.5s;
+}
+
+.parent .bg-animation2 {
+    position: absolute;
+    top: 100%;
+    left: 250px;
+    width: 850px;
+    height: 700px;
+    background: #081b29;
+    transform: rotate(0) skewY(0);
+    transform-origin: bottom left;
+    border-top: 3px solid #0ef;
+    transition: 1s ease;
+    transition-delay: .5s;
+}
+
+.parent.active .bg-animation2 {
+    transition-delay: 1s;
+    transform: rotate(-15deg) skewY(-40deg);
+}

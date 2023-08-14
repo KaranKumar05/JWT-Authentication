@@ -1,16 +1,12 @@
 import express from 'express';
 let router = express.Router();
-import { stringToHash, varifyHash } from 'bcrypt-inzi' //Library to convert string to hash
-// we convert password in to hash to prevent anyone to get that password 
-
-import { client } from './../mongoDb.mjs'
+import jwt from 'jsonwebtoken' 
+import { stringToHash, varifyHash } from 'bcrypt-inzi' 
+import { client } from '../mongoDb.mjs'
 const userCollection = client.db('JWTAuth').collection("Users");
 
-
-
-// url : api/v1/login 
 router.post('/login', async (req, res, next) => {
-    if ( // Checking parameters if any is missing 
+    if (
         !req.body?.email
         || !req.body?.password
     ) {
@@ -23,26 +19,35 @@ router.post('/login', async (req, res, next) => {
         return;
     }
 
-    req.body.email = req.body.email.toLowerCase();  // converting email ot lower case and then store in data base to get it back easily 
-
-
+    req.body.email = req.body.email.toLowerCase();
 
     try {
-        let result = await userCollection.findOne({ email: req.body.email }); // Checking the email already exist or not 
+        let result = await userCollection.findOne({ email: req.body.email });
         console.log(result);
 
-        if (!result) {  // Email does Exists // New User
+        if (!result) {  
             res.status(403).send({
                 message: "Email & Password Incorrect"
             });
             return;
-        } else { // Email Exists
-
-            // varifyHash always return Boolean
-            const isMatch = await varifyHash(req.body.password,result.password) // matching password with hash Password 
-            // once converted into hash can't return but comparable with original one
-            if (isMatch) { // verifing the password inserted by user is match to the password on database 
-                res.send(`Login Successfully`);
+        } else {
+            const isMatch = await varifyHash(req.body.password, result.password) 
+            if (isMatch) { 
+                const token = jwt.sign({  
+                    isAdmin: false,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                }, process.env.SECRET_KEY, {
+                    expiresIn: '1h' 
+                });  
+                res.cookie('token', token, {
+                    httpOnly: true, 
+                    secure: true,
+                })
+                res.send({
+                    message: "Login Successfully",
+                });
             } else {
                 res.status(403).send({
                     message: "Email & Password Incorrect"
@@ -62,10 +67,8 @@ router.post('/login', async (req, res, next) => {
 
 
 
-// url : api/v1/signup 
 router.post('/signup', async (req, res, next) => {
-    if ( // Checking parameters if any is missing 
-        // /? = nalish Operator If not found any parameter Replace it with undefine   
+    if ( 
         !req.body?.firstName
         || !req.body?.lastName
         || !req.body?.email
@@ -83,17 +86,14 @@ router.post('/signup', async (req, res, next) => {
         return;
     }
 
-    req.body.email = req.body.email.toLowerCase();  // converting email ot lower case and then store in data base to get it back easily 
+    req.body.email = req.body.email.toLowerCase(); 
 
     try {
-        let result = await userCollection.findOne({ email: req.body.email }); // Checking the email already exist or not 
+        let result = await userCollection.findOne({ email: req.body.email }); 
         console.log(result);
-        if (!result) {  // Email does Exists // New User
 
-
-            const passwordHash = await stringToHash(req.body.password) //Concerting password to Hash now even Developer is unable to get the password
-            // default 12 Rounds 
-
+        if (!result) {
+            const passwordHash = await stringToHash(req.body.password) 
             const insertResponse = await userCollection.insertOne({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
@@ -105,20 +105,15 @@ router.post('/signup', async (req, res, next) => {
             res.send({
                 message: "Signup Successfully"
             })
-
-        } else { // Email Exists
+        } else {
             res.status(403).send({
                 message: "The Email is Already Registered"
             });
         }
-
     } catch (err) {
         console.log(`Error:${err}`);
         res.status(500).send('Server Error Please try Again Later');
     }
-
-
-
 });
 
 export default router;
