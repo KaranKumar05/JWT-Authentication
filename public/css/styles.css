@@ -24,7 +24,7 @@ body {
 }
 
 /* Login  */
-.parent .login_form {
+.parent .form_box {
     position: absolute;
     top: 0;
     width: 50%;
@@ -34,12 +34,12 @@ body {
     justify-content: center;
 }
 
-.parent .login_form.login {
+.parent .form_box.login {
     left: 0;
     padding: 0 60px 0 40px;
 }
 
-.parent .login_form.login .animation {
+.parent .form_box.login .animation {
     transform: translateX(0);
     transition: .7s ease;
     opacity: 1;
@@ -48,20 +48,20 @@ body {
 
 }
 
-.parent.active .login_form.login .animation {
+.parent.active .form_box.login .animation {
     transform: translateX(-120%);
     transition-delay: calc(.1s * var(--i));
     opacity: 0;
     filter: blur(10px);
 }
 
-.login_form h2 {
+.form_box h2 {
     color: white;
     text-align: center;
     font-size: 32px;
 }
 
-.login_form .input-box {
+.form_box .input-box {
     position: relative;
     width: 100%;
     height: 50px;
@@ -118,13 +118,14 @@ body {
     color: rgb(27, 216, 250);
 }
 
-.btn {
+.btn > button {
     position: relative;
     width: 100%;
     height: 45px;
     background: transparent;
-    border: 2px solid rgb(27, 216, 250);
-    outline: none;
+    /* border: 2px solid rgb(27, 216, 250); */
+    outline: 2px solid #0ef;
+    border: none;
     border-radius: 40px;
     cursor: pointer;
     font-weight: bold;
@@ -132,25 +133,25 @@ body {
     color: white;
     transition: .5s;
 }
-
-.btn:hover {
+#login_btn:hover,
+#signup_btn:hover {
     background-color: rgba(0, 251, 255, 0.712);
+    outline-offset: 5px;
 }
-
-.login_form .link {
+.form_box .link {
     font-size: 14px;
     color: white;
     text-align: center;
     margin: 20px 0 10px;
 }
 
-.login_form .link p a {
+.form_box .link p a {
     color: rgb(27, 216, 250);
     font-weight: bold;
     text-decoration: none;
 }
 
-.login_form .link p a:hover {
+.form_box .link p a:hover {
     text-decoration: underline;
 }
 
@@ -194,17 +195,17 @@ body {
 }
 
 /* Register  */
-.parent .login_form.register {
+.parent .form_box.register {
     right: 0;
     padding: 0 40px 0 60px;
     pointer-events: none;
 }
 
-.parent.active .login_form.register {
+.parent.active .form_box.register {
     pointer-events: auto;
 }
 
-.parent .login_form.register .animation {
+.parent .form_box.register .animation {
     transform: translateX(130%);
     opacity: 0;
     filter: blur(10px);
@@ -212,7 +213,7 @@ body {
     transition-delay: calc(.1s * var(--j));
 }
 
-.parent.active .login_form.register .animation {
+.parent.active .form_box.register .animation {
     transition-delay: calc(.1s * var(--i));
     opacity: 1;
     filter: blur(0);

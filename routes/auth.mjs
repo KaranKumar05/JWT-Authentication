@@ -7,8 +7,8 @@ const userCollection = client.db('JWTAuth').collection("Users");
 
 router.post('/login', async (req, res, next) => {
     if (
-        !req.body?.email
-        || !req.body?.password
+        !req.body.email
+        || !req.body.password
     ) {
         res.status(403).send(
             `Required Parameters Missing
@@ -59,9 +59,6 @@ router.post('/login', async (req, res, next) => {
         console.log(`Error:${err}`);
         res.status(500).send('Server Error Please try Again Later');
     }
-
-
-
 });
 
 

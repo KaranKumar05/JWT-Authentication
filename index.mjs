@@ -3,7 +3,7 @@ import path from 'path';
 import authRouter from './routes/auth.mjs'
 import 'dotenv/config' //Environment variable (process.env)
 import cookieParser from 'cookie-parser'
-import jwt from 'jsonwebtoken' // To Generate JW token 
+import jwt from 'jsonwebtoken' // To verify JW token 
 
 
 
@@ -15,7 +15,7 @@ app.use(cookieParser()) // cookie parser
 
 app.use('/api/v1',authRouter);
 
-app.use((req,res,next)=>{
+app.use('/api/v1', (req,res,next)=>{
     console.log("req.cookie: ", req.cookies);
 
     const token = req.cookies.token;
@@ -32,8 +32,7 @@ app.use((req,res,next)=>{
     } catch (error) {
         res.status(401).send({
             message: 'Invalid Token'
-        });
-        
+        }); 
     }
 })
 
@@ -41,6 +40,8 @@ app.use((req,res,next)=>{
 app.post('/api/v1/test', (req,res, next)=>{ //secure api only access after token validation
     res.send('Testing Api is Working');
 })
+
+app.use(express.static(path.join(__dirname, 'public')))
 const PORT = process.env.PORT;
 app.listen(PORT, ()=>{
     console.log(`App is Running On Port: ${PORT}`);

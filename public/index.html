@@ -1,89 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="parent">
-        <span class="bg-animation"></span>
-        <span class="bg-animation2"></span>
-        <!-- login Form  -->
-        <div class="login_form login">
-            <h2 class="animation" style="--i:0; --j:16">Login</h2>
-            <form action="#">
-                <div class="input-box animation" style="--i:1; --j:17">
-                    <input type="email" required />
-                    <label for="">Email</label>
-                    <i class="bi bi-envelope"></i>
-                </div>
-                <div class="input-box animation" style="--i:2; --j:18">
-                    <input type="password" required />
-                    <label for="">Password</label>
-                    <i class="bi bi-lock-fill"></i>
-                </div>
-                <button type="submit" class="btn animation" style="--i:3; --j:19">Login</button>
-                <div class="link animation" style="--i:4; --j:20">
-                    <p>
-                        Don't Have an Account? <a href="#" class="signup-link">Sign Up</a>
-                    </p>
-                </div>
-            </form>
-        </div>
-        <div class="info-text login">
-            <h2 class="animation" style="--i:0; --j:15">WelCome Back!!</h2>
-        </div>
+      <span class="bg-animation"></span>
+      <span class="bg-animation2"></span>
+      <!-- login Form  -->
+      <div class="form_box login">
+        <h2 class="animation" style="--i: 0; --j: 16">Login</h2>
+        <form>
+          <div class="input-box animation" style="--i: 1; --j: 17">
+            <input type="email" id="login_email" required />
+            <label for="">Email</label>
+            <i class="bi bi-envelope"></i>
+          </div>
+          <div class="input-box animation" style="--i: 2; --j: 18">
+            <input type="password" id="login_password" required />
+            <label for="">Password</label>
+            <i class="bi bi-lock-fill"></i>
+          </div>
+          <div class="btn animation" style="--i: 3; --j: 19">
+            <button type="submit" id="login_btn">Login</button>
+          </div>
+          <div class="link animation" style="--i: 4; --j: 20">
+            <p>
+              Don't Have an Account? <a href="#" class="signup-link">Sign Up</a>
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="info-text login">
+        <h2 class="animation" style="--i: 0; --j: 15">WelCome Back!!</h2>
+      </div>
 
-        <!-- Sign up form  -->
-        <div class="login_form register">
-            <h2 class="animation" style="--i:12; --j:1">Register</h2>
-            <form action="#">
-                <div class="input-box animation" style="--i:13; --j:2">
-                    <input type="text" required />
-                    <label for="">Username</label>
-                    <i class="bi bi-person-fill"></i>
-                </div>
-                <div class="input-box animation" style="--i:14; --j:3">
-                    <input type="email" required />
-                    <label for="">Email</label>
-                    <i class="bi bi-envelope"></i>
-                </div>
-                <div class="input-box animation" style="--i:15; --j:4">
-                    <input type="password" required />
-                    <label for="">Password</label>
-                    <i class="bi bi-lock-fill"></i>
-                </div>
-                <button type="submit" class="btn animation" style="--i:16; --j:5">Login</button>
-                <div class="link animation" style="--i:17; --j:6">
-                    <p>
-                        Already Have an Account? <a href="#" class="login-link">Log In</a>
-                    </p>
-                </div>
-            </form>
-        </div>
-        <div class="info-text register">
-            <h2 class="animation" style="--i:15; --j:1">WelCome</h2>
-        </div>
+      <!-- Sign up form  -->
+      <div class="form_box register">
+        <h2 class="animation" style="--i: 12; --j: 1">Register</h2>
+        <form action="#">
+          <div class="input-box animation" style="--i: 13; --j: 2">
+            <input type="text" required />
+            <label for="">Username</label>
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="input-box animation" style="--i: 14; --j: 3">
+            <input type="email" required />
+            <label for="">Email</label>
+            <i class="bi bi-envelope"></i>
+          </div>
+          <div class="input-box animation" style="--i: 15; --j: 4">
+            <input type="password" required />
+            <label for="">Password</label>
+            <i class="bi bi-lock-fill"></i>
+          </div>
+          <div class="btn animation" style="--i: 16; --j: 5">
+            <button type="submit" id="signup_btn">Login</button>
+          </div>
+          <div class="link animation" style="--i: 17; --j: 6">
+            <p>
+              Already Have an Account? <a href="#" class="login-link">Log In</a>
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="info-text register">
+        <h2 class="animation" style="--i: 15; --j: 1">WelCome</h2>
+      </div>
     </div>
 
-    <script>
-        const parent = document.querySelector('.parent');
-        const signup_link = document.querySelector('.signup-link');
-        const login_link = document.querySelector('.login-link');
-
-        signup_link.onclick = () => {
-            parent.classList.add('active');
-        }
-        login_link.onclick = () => {
-            parent.classList.remove('active');
-        }
-
-    </script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./js/script.js"></script>
+  </body>
 </html>
