@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    body {
+        background-color: rgb(10, 29, 37);
+
+    }
+
+    nav {
+        display: flex;
+        padding: 1em 3em;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(to bottom,  rgb(0, 251, 255), rgb(10, 29, 37));
+    }
+
+    nav>h2 {
+        font-weight: bold;
+        font-size: 40px;
+        color: transparent;
+        color: rgb(10, 29, 37);
+    }
+
+    nav button {
+        padding: 5px 15px;
+        border-radius: 10px;
+        font-size: 1em;
+        border: none;
+        background-color: rgb(10, 29, 37);
+        color: rgb(0, 251, 255);
+        border: 1px solid white;
+        transition: .5s ease;
+    }
+    nav button:hover{
+    color: rgb(10, 29, 37);
+    cursor: pointer;
+    background-color: rgb(0, 251, 255);
+
+}
+    body>div {
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        justify-content: center;
+    }
+
+    body>div>div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        gap: 1em;
+        margin: 0 auto;
+    }
+    body>div>div:nth-child(1) > h1 {
+        color: white;
+        border-bottom: 2px solid white;
+        width: 100%;
+        text-align: center;
+    }
+
+    body>div>div:nth-child(1) > p {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: rgb(0, 251, 255);
+        text-align: center;
+    }
+
+    .links {
+        display: flex;
+        gap: 3em;
+        padding: 1em;
+        justify-content: center;
+        width: 20em;
+        border-radius: 30px;
+        margin: 0 auto;
+        border: 2px solid rgb(0, 251, 255);
+    }
+
+    .links>i {
+        color: rgb(0, 251, 255);
+        font-size: 3em;
+    }
+</style>
+
+<body>
+    <nav>
+        <h2>DS OFFICIAL</h2>
+        <button>Log out</button>
+    </nav>
+    <div>
+        <div>
+            <h1>WelCome</h1>
+            <p>I'm delighted to have you here. If there's anything you need or any questions you have, don't hesitate to
+                let
+                me know. Whether it's a friendly chat or some information you're after, I'm here to make your experience
+                enjoyable and informative. Feel free to start the conversation, and let's make the most of our time
+                together!</p>
+        </div>
+        <div class="links">
+            <i class="bi bi-github"></i>
+            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-envelope"></i>
+        </div>
+    </div>
+</body>
+
+</html>

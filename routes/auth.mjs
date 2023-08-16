@@ -35,8 +35,7 @@ router.post('/login', async (req, res, next) => {
             if (isMatch) { 
                 const token = jwt.sign({  
                     isAdmin: false,
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
+                    username: req.body.username,
                     email: req.body.email,
                 }, process.env.SECRET_KEY, {
                     expiresIn: '1h' 
@@ -66,8 +65,7 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
     if ( 
-        !req.body?.firstName
-        || !req.body?.lastName
+        !req.body?.username
         || !req.body?.email
         || !req.body?.password
     ) {
@@ -75,8 +73,7 @@ router.post('/signup', async (req, res, next) => {
             `Required Parameters Missing
                 Please Fill All the Fields
                 
-                firstName : "abc",
-                lastName : "xyz",
+                username : "xyz",
                 email : "abc@gmail.com",
                 Password: "Password"`
         );
@@ -92,8 +89,7 @@ router.post('/signup', async (req, res, next) => {
         if (!result) {
             const passwordHash = await stringToHash(req.body.password) 
             const insertResponse = await userCollection.insertOne({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
+                username: req.body.username,
                 email: req.body.email,
                 password: passwordHash,
                 CreatedOn: new Date
